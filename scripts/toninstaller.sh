@@ -8,7 +8,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 # Get arguments
-config="https://ton-blockchain.github.io/global.config.json"
+config="https://ton-blockchain.github.io/testnet-global.config.json"
 while getopts c: flag
 do
 	case "${flag}" in
@@ -134,6 +134,8 @@ rm -rf $SOURCES_DIR/ton
 rm -rf $SOURCES_DIR/mytonctrl
 git clone --recursive https://github.com/ton-blockchain/ton.git
 git clone --recursive https://github.com/ton-blockchain/mytonctrl.git
+cd ton && git checkout branch testnet && cd ..
+
 
 # Подготавливаем папки для компиляции
 echo -e "${COLOR}[3/6]${ENDC} Preparing for compilation"
